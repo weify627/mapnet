@@ -3,3 +3,6 @@ data
 *.pyc
 *.ipynb
 shapenetcore_partanno_segmentation_benchmark_v0/
+.DS_Store
+*.m~
+*.mexmaci64
