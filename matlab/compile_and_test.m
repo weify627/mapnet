@@ -2,7 +2,23 @@
 close all
 %% compile
 LIBIGL_DIR='/Users/olkido/Dropbox/Work/code/other/libigl/';
-matlab_command = sprintf('mex -I%s/include -I%s/external/nanogui/ext/eigen  cut_mesh_mex.cpp',LIBIGL_DIR,LIBIGL_DIR);
+% list cpp files: the main one (with the mexFunction) and any dependencies
+% order here matters: put the "main" .cpp file (the one that determines the
+% name of the mex file) first here.
+cfiles = {...
+    'cut_mesh_mex.cpp'...
+    'cut_mesh_from_singularities_randomized.cpp', ...
+    'polyvector_field_cut_mesh_with_singularities_randomized.cpp',...
+    };
+% create MATLAB command for building the mex-file
+% include necessary directories (e.g. libigl with -I)
+matlab_command = sprintf('mex -I%s/include -I%s/external/nanogui/ext/eigen ',LIBIGL_DIR,LIBIGL_DIR);
+% then, add the .cpp files necessary
+for i = 1:length(cfiles)
+    matlab_command = sprintf('%s %s', matlab_command, cfiles{i});
+end
+% run the MATLAB compilation command - this should create a
+% cut_mesh_mex.mexw-whatever filen
 eval(matlab_command)
 
 %%           test

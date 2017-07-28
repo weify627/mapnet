@@ -14,7 +14,7 @@
 #include <igl/matlab_format.h>
 #include <igl/adjacency_matrix.h>
 #include <igl/boundary_loop.h>
-#include <igl/polyvector_field_cut_mesh_with_singularities.h>
+#include "polyvector_field_cut_mesh_with_singularities_randomized.h"
 #include <igl/cut_mesh.h>
 #include <igl/euler_characteristic.h>
 
@@ -79,7 +79,7 @@ void mexFunction(	int nlhs, mxArray *plhs[],
         
     // generate cuts using tree traversal: a boolean per face edge
     Eigen::MatrixXi cuts;
-    igl::polyvector_field_cut_mesh_with_singularities(V, F, singularities, cuts);
+    polyvector_field_cut_mesh_with_singularities_randomized(V, F, singularities, cuts);
     
     // duplicate vertices along cut to produce cut mesh
     Eigen::MatrixXd Vc;
