@@ -23,7 +23,7 @@ using namespace std;
 void mexFunction(	int nlhs, mxArray *plhs[], 
 				 int nrhs, const mxArray*prhs[] ) 
 { 
-	/* retrive arguments */
+	/* retrieve arguments */
 	if( nrhs!=2 ) 
 		mexErrMsgTxt("2 input arguments are required - faces and vertices."); 
 	if( nlhs<2 ) 
@@ -95,7 +95,7 @@ void mexFunction(	int nlhs, mxArray *plhs[],
     int b_out = Lc.size();
     // compute genus of input mesh
     int g_out =(2-b_out-e_out)/2;
-    cerr<<" -> Input mesh: e = "<<e_out<<", b = "<<b_out<<", g= "<<g_out<<endl;
+    cerr<<" -> Output mesh: e = "<<e_out<<", b = "<<b_out<<", g= "<<g_out<<endl;
 
     if( e_out!=1 ) 
 		mexErrMsgTxt("Output mesh does not have disk topology."); 

@@ -1,14 +1,14 @@
-clear
+ clear
 close all
 %% compile
 LIBIGL_DIR='/Users/olkido/Dropbox/Work/code/other/libigl/';
 matlab_command = sprintf('mex -I%s/include -I%s/external/nanogui/ext/eigen  cut_mesh_mex.cpp',LIBIGL_DIR,LIBIGL_DIR);
 eval(matlab_command)
 
-%% test
-[V,F] = readOFF('../data/sphere_0.off');
+%%           test
+[V,F] = load_mesh('../data/torus_lo_rt.obj');
 [Vc,Fc] = cut_mesh_mex(V,F);
-
+      
 % plot and highlight boundary in cut (and original) mesh
 [E] = exterior_edges(F);
 [Ec] = exterior_edges(Fc);
