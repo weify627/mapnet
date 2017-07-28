@@ -1,4 +1,4 @@
- clear
+clear
 close all
 %% compile
 LIBIGL_DIR='/Users/olkido/Dropbox/Work/code/other/libigl/';
@@ -22,7 +22,7 @@ end
 eval(matlab_command)
 
 %%           test
-[V,F] = load_mesh('../data/torus_lo_rt.obj');
+[V,F] = load_mesh('data/torus_lo_rt.obj');
 [Vc,Fc] = cut_mesh_mex(V,F);
       
 % plot and highlight boundary in cut (and original) mesh
